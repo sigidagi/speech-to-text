@@ -20,9 +20,8 @@ type Flags struct {
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
-func NewFlags(args []string) (*Flags, error) {
+func NewFlags(name string, args []string) (*Flags, error) {
 
-	name := "./models/ggml-base.en.bin"
 	flags := &Flags{
 		FlagSet: flag.NewFlagSet(name, flag.ContinueOnError),
 	}
@@ -43,8 +42,7 @@ func NewFlags(args []string) (*Flags, error) {
 // PUBLIC METHODS
 
 func (flags *Flags) GetModel() string {
-	//return flags.Lookup("model").Value.String()
-	return "./models/ggml-base.en.bin"
+	return flags.Lookup("model").Value.String()
 }
 
 func (flags *Flags) GetLanguage() string {
